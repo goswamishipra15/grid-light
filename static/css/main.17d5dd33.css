@@ -1,0 +1,2 @@
+body{font-family:sans-serif}.wrapper{align-items:center;display:flex;flex-direction:column;gap:16px;justify-content:center}.grid{grid-gap:20px;display:grid;gap:20px;max-width:300px;padding:20px;width:100%}.cell,.grid{border:1px solid #000}.cell{background-color:initial;height:0;padding-bottom:100%}.cell-activated{background-color:green}
+/*# sourceMappingURL=main.17d5dd33.css.map*/

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/grid-light/static/css/main.17d5dd33.css",
+    "main.js": "/grid-light/static/js/main.52444a28.js",
+    "index.html": "/grid-light/index.html",
+    "main.17d5dd33.css.map": "/grid-light/static/css/main.17d5dd33.css.map",
+    "main.52444a28.js.map": "/grid-light/static/js/main.52444a28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17d5dd33.css",
+    "static/js/main.52444a28.js"
+  ]
+}

@@ -1,23 +1,58 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Cell from './components/cell';
 
 function App() {
+  const [order,setOrder] = useState([]);
+  const [isDeactivating,setIsDeactivating] = useState(false);
+  const config=[
+    [1,1,1],
+    [1,0,1],
+    [1,1,1]
+  ];
+
+  const deactivateCells = () => {
+    setIsDeactivating(true);
+    const timer = setInterval(() => {
+      setOrder((origOrder) => {
+        const newOrder = origOrder.slice();
+        newOrder.pop();
+
+        if (newOrder.length === 0) {
+          clearInterval(timer);
+          setIsDeactivating(false);
+        }
+
+        return newOrder;
+      });
+    }, 300);
+}
+
+  const activateCells = (index)=>{
+    const newOrder = [...order,index];
+    setOrder(newOrder);
+    //deactivation
+    if (newOrder.length === config.flat(1).filter(Boolean).length) {
+      deactivateCells();
+    } 
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <div className='grid' style={{
+        gridTemplateColumns: `repeat(${config[0].length}, 1fr)`,
+      }}>
+        {config.flat(1).map((value,index)=>{
+          return value ? 
+          <Cell
+              key={index}
+              label={`Cell ${index}`}
+              filled={order.includes(index)}
+              onClick={() => activateCells(index)}
+              isDisabled={order.includes(index) || isDeactivating}
+          />:<span/>
+        })}
+      </div>
     </div>
   );
 }
